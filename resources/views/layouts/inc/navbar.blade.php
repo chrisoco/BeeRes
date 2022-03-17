@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top">
+<nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top mb-3">
     <div class="container">
         <a class="navbar-brand" href="{{ route('index') }}">IPA</a>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,13 +14,15 @@
 
             <ul class="navbar-nav ml-auto">
 
+                @auth
                 <li class="nav-item mx-5">
-                    <span class="nav-link"></span>
+                    <span class="nav-link">{{ auth()->user()->email }}</span>
                 </li>
+                @endauth
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-person-lines-fill"></i></i><span class="caret"></span>
+                        <i class="fa-solid fa-user-gear"></i></i><span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu mt-md-2" aria-labelledby="dropdown">
 
@@ -34,6 +36,8 @@
                 </li>
 
             </ul>
+
+
 
         </div>
     </div>

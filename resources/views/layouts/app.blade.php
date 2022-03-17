@@ -16,15 +16,20 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.0/css/all.css">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    @yield('style')
 </head>
 <body>
     <div id="app">
 
         @include('layouts.inc.navbar')
         @yield('content')
+        @include('layouts.inc.footer')
 
     </div>
 </body>
