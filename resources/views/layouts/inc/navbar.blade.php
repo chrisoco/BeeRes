@@ -18,7 +18,7 @@
                 <li class="nav-item mx-5">
                     <span class="nav-link">{{ auth()->user()->email }}</span>
                 </li>
-                @endauth
+
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,6 +34,7 @@
                         </li>
                     </ul>
                 </li>
+                @endauth
 
             </ul>
 
