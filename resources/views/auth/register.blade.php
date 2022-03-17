@@ -20,7 +20,7 @@
                 <x-forms.password confirm="true" />
 
                 <div class="form-group">
-                    <input class="custom-checkbox @error('agb') is-invalid @enderror" type="checkbox" name="agb" id="agb" value="{{ old('agb') }}">
+                    <input class="@error('agb') is-invalid @enderror" type="checkbox" name="agb" id="agb">
                     <label class="form-label mt-4" for="agb">AGB Accepted<span class="text-danger">*</span></label>
                     @error('agb')
                     <div class="invalid-feedback">{{ $message }}</div>
