@@ -15,9 +15,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $created_at
  * @property string $updated_at
  * @property User $user
- * @property Contract[] $contracts
+ * @property Contract[] $contracts_applicable
  * @property Postcode[] $postcodes
- * @property Contract[] $contracts_available
+ * @property Contract[] $contracts
  */
 class Beekeeper extends Model
 {
@@ -46,7 +46,7 @@ class Beekeeper extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function contracts()
+    public function contracts_applicable()
     {
         return $this->belongsToMany(Contract::class);
     }
@@ -62,7 +62,7 @@ class Beekeeper extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function contracts_available()
+    public function contracts()
     {
         return $this->hasMany(Contract::class);
     }

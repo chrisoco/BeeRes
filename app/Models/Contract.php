@@ -40,6 +40,14 @@ class Contract extends Model
     protected $fillable = ['beekeeper_id', 'postcode_id', 'created_by', 'lon', 'lat', 'contact_firstname', 'contact_lastname', 'contact_phone', 'info', 'created_at', 'updated_at'];
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function beekeepers()
+    {
+        return $this->belongsToMany(Beekeeper::class);
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function beekeeper()
@@ -63,11 +71,5 @@ class Contract extends Model
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function beekeepers()
-    {
-        return $this->belongsToMany(Beekeeper::class);
-    }
+
 }
