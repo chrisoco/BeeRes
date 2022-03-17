@@ -20,7 +20,7 @@ class CreateBeekeepersTable extends Migration
             $table->string('phone')->unique();
             $table->timestamp('phone_verified_at')->nullable();
             $table->timestamps();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->unique()->constrained();
         });
     }
 
@@ -34,3 +34,4 @@ class CreateBeekeepersTable extends Migration
         Schema::dropIfExists('beekeepers');
     }
 }
+
