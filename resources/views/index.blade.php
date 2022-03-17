@@ -7,11 +7,6 @@
             .col-md-border:not(:last-child) {
                 border-right: 2px solid #d7d7d7;
             }
-            .col-md-border + .col-md-border {
-                border-left: 2px solid #d7d7d7;
-                margin-left: -1px;
-                padding-left: 30px;
-            }
         }
     </style>
     @endauth
@@ -35,7 +30,7 @@
 
             </div>
 
-            <div class="col-md-6 col-md-border d-flex justify-content-center mb-5 ps-md-5">
+            <div class="col-md-6 col-md-border d-flex justify-content-center m-auto">
 
                 <div class="w-100">
 
