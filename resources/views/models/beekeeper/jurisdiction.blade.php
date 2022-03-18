@@ -43,6 +43,33 @@
             }
 
         }
+
+        function add(el, id) {
+
+            el.setAttribute('onclick', null);
+            el.style.border = '1px solid green';
+            el.innerHTML    = el.innerHTML + '<button type="button" class="btn btn-danger float-end" onclick="reverseAdd('+id+', this.parentElement)">X</button>';
+
+            document.getElementById('currentJur').append(el);
+
+
+            let input = document.createElement('input');
+            input.setAttribute('type', 'hidden');
+            input.setAttribute('name', 'addJur[]');
+            input.setAttribute('value', id);
+
+            document.getElementById('addJur').append(input);
+
+        }
+
+        function reverseAdd(id, el) {
+            document.getElementsByName('addJur[]').forEach(element => {
+                if(element.value == id) {
+                    element.remove();
+                }
+            });
+            el.remove();
+        }
     </script>
 
 <div class="container-fluid">
@@ -62,7 +89,7 @@
                             <div class="d-none" id="delJur"></div>
                             <div class="d-none" id="addJur"></div>
 
-                            <div class="list-group" id="">
+                            <div class="list-group" id="currentJur">
                                 @foreach($postcodes as $postcode)
                                     <div class="list-group-item list-group-item-action">
                                         {{ $postcode->postcode . ' | ' . $postcode->name }}
@@ -128,7 +155,7 @@
 
                 let el = document.createElement('div');
                 el.setAttribute('class', 'list-group-item list-group-item-action oldSearch');
-                el.setAttribute('onclick', 'console.log("HELLO")');
+                el.setAttribute('onclick', 'add(this,'+ postcode.id +')');
                 el.innerHTML = postcode.postcode + ' | ' + postcode.name;
 
                 searchRes.appendChild(el);
