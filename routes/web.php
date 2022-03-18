@@ -13,8 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/', function () { return view('index'); })->name('index');
 
 Auth::routes();
+
+Route::group(['middleware' => 'auth'], function() {
+
+
+    Route::group(['middleware' => 'beekeeperOnly'], function() {
+
+        Route::get('profile', [App\Http\Controllers\BeekeeperController::class, 'profile'])->name('profile');
+
+    });
+
+
+});
