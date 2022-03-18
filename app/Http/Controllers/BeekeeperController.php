@@ -36,8 +36,22 @@ class BeekeeperController extends Controller
      */
     public function jurisdiction()
     {
+        return view('models.beekeeper.jurisdiction', [
+            'postcodes' => auth()->user()->beekeeper->postcodes
+        ]);
+    }
 
-        return view('models.beekeeper.jurisdiction');
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updateJurisdiction(Request $request)
+    {
+
+        return redirect(route('jurisdiction'));
+
     }
 
     /**
