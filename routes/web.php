@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['middleware' => 'beekeeperOnly'], function() {
 
         Route::get('profile', [App\Http\Controllers\BeekeeperController::class, 'profile'])->name('profile');
+        Route::get('jurisdiction', [App\Http\Controllers\BeekeeperController::class, 'jurisdiction'])->name('jurisdiction');
 
     });
 
