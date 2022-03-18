@@ -11,13 +11,21 @@ class SearchController extends Controller
 {
     public function searchPLZ(Request $request)
     {
-        if($request->search) {
 
-            $data = DB::table('postcodes')->where('postcode','LIKE','%'.$request->search."%")->limit(10)->get();
+        if($request->input('search')) {
+
+            $column = is_numeric($request->input('search')) ? 'postcode' : 'name';
+
+            $data = DB::table('postcodes')
+                ->where($column, 'LIKE', '%' . $request->input('search') . "%")
+                ->whereNotIn('id', auth()->user()->beekeeper->postcodes->pluck('id'))
+                ->limit(10)->get();
 
             return Response($data);
 
         }
+
+        return Response(Postcode::all()->take(10));
 
     }
 }
