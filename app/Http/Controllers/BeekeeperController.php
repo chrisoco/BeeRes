@@ -24,7 +24,9 @@ class BeekeeperController extends Controller
      */
     public function profile()
     {
-        return view('models.beekeeper.profile');
+        return view('models.beekeeper.profile', [
+            'beekeeper' => auth()->user()->beekeeper,
+        ]);
     }
 
     /**

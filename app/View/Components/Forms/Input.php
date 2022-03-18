@@ -28,15 +28,23 @@ class Input extends Component
     public $title;
 
     /**
+     * The alert message.
+     *
+     * @var string
+     */
+    public $value;
+
+    /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($type, $name, $title)
+    public function __construct($type, $name, $title, $value)
     {
         $this->type  = $type;
         $this->name  = $name;
         $this->title = $title;
+        $this->value = $value;
     }
 
     /**

@@ -13,10 +13,10 @@
                 @csrf
                 @method('POST')
 
-                <x-forms.input type="text" name="firstname" title="Firstname" />
-                <x-forms.input type="text" name="lastname" title="Lastname" />
-                <x-forms.input type="text" name="phone" title="Phone" />
-                <x-forms.input type="email" name="email" title="E-Mail" />
+                <x-forms.input type="text"  name="firstname" title="Firstname" value="{{ old('firstname') }}" />
+                <x-forms.input type="text"  name="lastname"  title="Lastname"  value="{{ old('lastname') }}" />
+                <x-forms.input type="text"  name="phone"     title="Phone"     value="{{ old('phone') }}" />
+                <x-forms.input type="email" name="email"     title="E-Mail"    value="{{ old('email') }}" />
                 <x-forms.password confirm="true" />
 
                 <div class="form-group">

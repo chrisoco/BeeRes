@@ -17,11 +17,12 @@
                     @csrf
                     @method('PUT')
 
-                    <x-forms.input type="text" name="firstname" title="Firstname" />
-                    <x-forms.input type="text" name="lastname" title="Lastname" />
-                    <x-forms.input type="text" name="phone" title="Phone" />
-                    <x-forms.input type="email" name="email" title="E-Mail" />
-                    <x-forms.input type="password" name="old_pw" title="Old Password" />
+                    <x-forms.input type="text"     name="firstname" title="Firstname"    value="{{ $beekeeper->firstname }}"   />
+                    <x-forms.input type="text"     name="lastname"  title="Lastname"     value="{{ $beekeeper->lastname }}"    />
+                    <x-forms.input type="text"     name="phone"     title="Phone"        value="{{ $beekeeper->phone }}"       />
+                    <x-forms.input type="email"    name="email"     title="E-Mail"       value="{{ $beekeeper->user->email }}" />
+                    <hr />
+                    <x-forms.input type="password" name="old_pw"    title="Old Password" value="" />
                     <x-forms.password confirm="true" />
 
                     <input class="btn btn-block btn-success mt-3" type="button" value="Update" />
