@@ -1,5 +1,11 @@
 <div class="row justify-content-center">
     <div class="col-md-12 col-lg-8">
+        @error('email')
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error</strong> E-Mail Address or Password wrong!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @enderror
         <div class="card">
             <div class="card-header text-center"><h4>Login</h4></div>
             <div class="card-body">
@@ -11,12 +17,6 @@
 
                         <div class="col">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
                         </div>
                     </div>
 
@@ -25,7 +25,6 @@
 
                         <div class="col">
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -33,8 +32,6 @@
                             @enderror
                         </div>
                     </div>
-
-
 
                     <button type="submit" class="btn btn-primary btn-block mb-2">Login</button>
 
