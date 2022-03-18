@@ -83,13 +83,59 @@
         </div>
 
         <!-- RIGHT SIDE -->
+
         <div class="col-md-6 col-md-border d-flex justify-content-center m-auto">
             <div class="h-100 w-100">
 
+                <div class="card col-lg-8 offset-lg-2 mb-2 mb-lg-0">
+                    <div class="card-header text-center"><h4>Search PLZ</h4></div>
 
+                    <div class="card-body" style="height: 20rem">
+
+                        <input type="text" class="form-control" id="searchInput" onkeyup="search(this)" placeholder="PLZ Search" autocomplete="off">
+
+                        <div class="list-group overflow-auto" style="max-height: 15.5rem" id="searchOutput"></div>
+
+                    </div>
+                </div>
 
             </div>
         </div>
+        <script>
+
+            const searchRes = document.getElementById('searchOutput');
+
+            function search (e) {
+
+                $.ajax({
+                    type   : 'get',
+                    url    : '{{ route('search.plz') }}',
+                    data   : {search: e.value},
+                    success: function (data) {
+
+                        $('.oldSearch').remove();
+
+                        for(let postcode of data) {
+                            insert(postcode);
+                        }
+
+                    }
+                });
+
+            }
+
+            function insert(postcode) {
+
+                let el = document.createElement('div');
+                el.setAttribute('class', 'list-group-item list-group-item-action oldSearch');
+                el.setAttribute('onclick', 'console.log("HELLO")');
+                el.innerHTML = postcode.postcode + ' | ' + postcode.name;
+
+                searchRes.appendChild(el);
+
+            }
+
+        </script>
 
     </div>
 </div>

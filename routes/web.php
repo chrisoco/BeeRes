@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('profile', [App\Http\Controllers\BeekeeperController::class, 'profile'])->name('profile');
         Route::get('jurisdiction', [App\Http\Controllers\BeekeeperController::class, 'jurisdiction'])->name('jurisdiction');
         Route::post('jurisdiction/update', [App\Http\Controllers\BeekeeperController::class, 'updateJurisdiction'])->name('jurisdiction.update');
+        Route::get('search/plz', [App\Http\Controllers\SearchController::class, 'searchPLZ'])->name('search.plz');
 
     });
 
