@@ -61,7 +61,8 @@ class RegisterController extends Controller
             'password'  => ['required', 'string', 'min:8', 'regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/', 'confirmed'],
             'agb'       => ['required']
         ], [
-            'regex' => 'Password must contain at least 1x Uppercase, 1x Lowercase, a number and a special character!'
+            'phone.regex' => 'Not a valid Format, please use: +41, 0041, 07x or 044',
+            'password.regex' => 'Password must contain at least 1x Uppercase, 1x Lowercase, a number and a special character!'
         ]);
     }
 
@@ -81,7 +82,7 @@ class RegisterController extends Controller
         Beekeeper::create([
             'firstname' => $data['firstname'],
             'lastname'  => $data['lastname'],
-            'phone'     => convertPhoneNum($data['phone']),
+            'phone'     => formatPhoneNum($data['phone']),
             'user_id'   => $user->id,
         ]);
 
