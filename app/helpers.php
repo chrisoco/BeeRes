@@ -21,14 +21,15 @@
      * @param $phone
      * @return string
      */
-    function convertPhoneNum($phone): string
+    function formatPhoneNum($phone): string
     {
         $phone = replaceEmptyChars($phone);
 
         switch (substr($phone, 0, 2)) {
 
             case '00': $phone = substr($phone, 2); break;
-            case '07': $phone = '41' . substr($phone, 1); break;
+            case '07':
+            case '04': $phone = '41' . substr($phone, 1); break;
             case '+4': $phone = substr($phone, 1); break;
 
         }
