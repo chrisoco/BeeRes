@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BeekeeperController extends Controller
 {
@@ -49,6 +50,25 @@ class BeekeeperController extends Controller
      */
     public function updateJurisdiction(Request $request)
     {
+        // https://laravel.com/docs/9.x/validation#rule-exists
+
+        $validator = Validator::make($request->all(), [
+            'delJur'   => ['array'],
+            'delJur.*' => ['integer', 'exists:App\Models\Postcode,id'],
+            'addJur'   => ['array'],
+            'addJur.*' => ['integer', 'exists:App\Models\Postcode,id'],
+        ]);
+
+
+
+        if(!$validator->fails()) {
+
+            $postcodes = auth()->user()->beekeeper->postcodes();
+
+            if(isset($validator->validated()['addJur'])) $postcodes->attach($validator->validated()['addJur']);
+            if(isset($validator->validated()['delJur'])) $postcodes->detach($validator->validated()['delJur']);
+
+        }
 
         return redirect(route('jurisdiction'));
 
