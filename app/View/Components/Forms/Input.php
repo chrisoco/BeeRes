@@ -42,17 +42,25 @@ class Input extends Component
     public $required;
 
     /**
+     * The alert message.
+     *
+     * @var string
+     */
+    public $placeholder;
+
+    /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($type, $name, $title, $value, $required = 'true')
+    public function __construct($type, $name, $title, $value, $required = 'true', $placeholder = '')
     {
         $this->type  = $type;
         $this->name  = $name;
         $this->title = $title;
         $this->value = $value;
         $this->required = $required == 'true';
+        $this->placeholder = $placeholder == '' ? $title : $placeholder;
     }
 
     /**

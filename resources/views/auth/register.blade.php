@@ -15,7 +15,7 @@
 
                 <x-forms.input type="text"  name="firstname" title="Firstname" value="{{ old('firstname') }}" />
                 <x-forms.input type="text"  name="lastname"  title="Lastname"  value="{{ old('lastname') }}" />
-                <x-forms.input type="text"  name="phone"     title="Phone"     value="{{ old('phone') }}" />
+                <x-forms.input type="text"  name="phone"     title="Phone"     value="{{ old('phone') }}" placeholder="076 581 35 96" />
                 <x-forms.input type="email" name="email"     title="E-Mail"    value="{{ old('email') }}" />
                 <x-forms.password confirm="true" />
 

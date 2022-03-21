@@ -20,7 +20,7 @@
                 <h4 class="text-center">Contact Information</h4>
                 <x-forms.input type="text"  name="contact_firstname" title="Firstname" value="{{ old('contact_firstname') }}" required="false" />
                 <x-forms.input type="text"  name="contact_lastname" title="Lastname" value="{{ old('contact_lastname') }}" required="false" />
-                <x-forms.input type="text"  name="contact_phone" title="Phone" value="{{ old('contact_phone') }}" required="false" />
+                <x-forms.input type="text"  name="contact_phone" title="Phone" value="{{ old('contact_phone') }}" required="false" placeholder="076 581 35 96" />
 
                 <x-forms.textarea name="info" title="Additional Information" value="{{ old('info') }}" required="false" />
 
