@@ -29,5 +29,11 @@ Route::group(['middleware' => 'auth'], function() {
 
     });
 
+    Route::group(['middleware' => 'adminOnly'], function() {
+
+        
+
+    });
+
 
 });
