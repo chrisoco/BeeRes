@@ -31,7 +31,8 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::group(['middleware' => 'adminOnly'], function() {
 
-        
+        Route::get('contract/create', [App\Http\Controllers\ContractController::class, 'create'])->name('contract.create');
+        Route::post('contract/store', [App\Http\Controllers\ContractController::class, 'store'])->name('contract.store');
 
     });
 
