@@ -13,8 +13,16 @@
                 @csrf
                 @method('POST')
 
-                <x-forms.number name="lat" title="Latitude"  min="47" max="48" placeholder="47.39036" value="{{ old('lat') }}" />
-                <x-forms.number name="lon" title="Longitude" min="8" max="9" placeholder="8.49087" value="{{ old('lon') }}" />
+                @error('plz-api')
+                    <x-forms.alert message="{{ $message }}" type="danger" />
+                @enderror
+
+                <x-forms.number name="lat" title="Latitude"  min="47" max="48" placeholder="47.39036" value="{{ old('lat') }}" step=".00001" />
+                <x-forms.number name="lon" title="Longitude" min="8"  max="9"  placeholder="8.49087"  value="{{ old('lon') }}" step=".00001" />
+
+                @error('plz-api')
+                    <x-forms.number name="plz" title="Postcode" min="8000" max="9000" placeholder="8048" value="{{ old('plz') }}" step="1" />
+                @enderror
 
                 <hr />
                 <h4 class="text-center">Contact Information</h4>
