@@ -64,8 +64,7 @@ class BeekeeperController extends Controller
         if(!$validator->fails()) {
 
             $postcodes = auth()->user()->beekeeper->postcodes();
-
-            // TODO: Validate duplicate? or test what happens with duplicates.
+            
             if(isset($validator->validated()['addJur'])) $postcodes->attach($validator->validated()['addJur']);
             if(isset($validator->validated()['delJur'])) $postcodes->detach($validator->validated()['delJur']);
 
