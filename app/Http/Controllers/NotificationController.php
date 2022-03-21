@@ -10,19 +10,39 @@ class NotificationController extends Controller
     public static function notifyBeekeeperNewContract(Contract $contract)
     {
 
+
+
         // Find all Beekeepers from Region:
-        $beekeepersFromRegion = $contract->postcode->beekeepers;
+        $beekeepers = $contract->postcode->beekeepers;
 
-        foreach ($beekeepersFromRegion as $beekeeper) {
+        if(count($beekeepers) == 0) {
 
-            $msg = 'Dear '.$beekeeper->fullName .', '.
-                   'You have been selected for a new Beekeeper job! Apply here: '.
-                    route('contract.accept', $contract->id);
-
-            $beekeeper->contracts_applicable()->attach($contract);
-            // SmsController::sendSmsNotification($beekeeper->phone, $msg);
+            // Search nearest Beekeepers and add to $beekeepers.
 
         }
+
+        $failed = [];
+
+        foreach ($beekeepers as $beekeeper) {
+
+            $msg = 'Dear ' . $beekeeper->fullName . ', ' .
+                'You have been selected for a new Beekeeper job! Apply here: ' .
+                route('contract.accept', $contract->id);
+
+            $beekeeper->contracts_applicable()->attach($contract);
+            // $success = SmsController::sendSmsNotification($beekeeper->phone, $msg);
+            $success = true;
+
+            if(! $success) {
+                $failed[] = $beekeeper;
+            }
+
+        }
+
+        if(count($failed) > 0) {
+            // Notify E-Mail $contract->created_by_user
+        }
+
 
 
     }

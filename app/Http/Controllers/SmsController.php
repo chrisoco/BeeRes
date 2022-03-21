@@ -12,9 +12,10 @@ class SmsController extends Controller
         $client = new \Vonage\Client($basic);
 
         $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS("41765813596", config('services.nexmo.sms_from'), $message)
+            new \Vonage\SMS\Message\SMS($to, config('services.nexmo.sms_from'), $message)
         );
+        
+        return $response->current()->getStatus() == 0;
 
-        return $response->current()->getStatus();
     }
 }
