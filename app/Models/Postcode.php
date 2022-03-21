@@ -30,6 +30,11 @@ class Postcode extends Model
      */
     protected $fillable = ['postcode', 'name', 'created_at', 'updated_at'];
 
+    public function getCodeNameAttribute()
+    {
+        return $this->postcode .' '. $this->name;
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */

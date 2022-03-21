@@ -46,8 +46,8 @@ class ContractController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'lat'               => ['required', 'numeric'], // , 'min:47', 'max:48'
-            'lon'               => ['required', 'numeric'], // , 'min:8', 'max:9'
+            'lat'               => ['required', 'numeric', 'min:47', 'max:48'],
+            'lon'               => ['required', 'numeric', 'min:8', 'max:9'],
             'plz'               => ['nullable', 'numeric', 'min:8000', 'max:9000', 'exists:App\Models\Postcode,postcode'],
             'contact_firstname' => ['nullable', 'string'],
             'contact_lastname'  => ['nullable', 'string'],
@@ -97,10 +97,10 @@ class ContractController extends Controller
 
         }
 
-        Contract::create($validated);
+        $contract = Contract::create($validated);
 
         // return view with contract created successful and overview of contract.
-        return redirect(route('contract.create'));
+        return redirect(route('contract.show', $contract->id));
 
     }
 
@@ -112,7 +112,9 @@ class ContractController extends Controller
      */
     public function show($id)
     {
-        //
+        $contract = Contract::findOrFail($id);
+
+        return view('models.contract.show', ['contract' => $contract]);
     }
 
     /**

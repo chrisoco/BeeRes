@@ -66,7 +66,7 @@ class Contract extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function created_by_user() :\App\Models\User
+    public function created_by_user()
     {
         return $this->belongsTo(User::class, 'created_by');
     }
