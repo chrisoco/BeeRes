@@ -35,6 +35,11 @@ class Beekeeper extends Model
      */
     protected $fillable = ['user_id', 'firstname', 'lastname', 'phone', 'phone_verified_at', 'created_at', 'updated_at'];
 
+
+    public function getFullNameAttribute()
+    {
+        return $this->firstname .' '. $this->lastname;
+    }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('jurisdiction', [App\Http\Controllers\BeekeeperController::class, 'jurisdiction'])->name('jurisdiction');
         Route::post('jurisdiction/update', [App\Http\Controllers\BeekeeperController::class, 'updateJurisdiction'])->name('jurisdiction.update');
         Route::get('search/plz', [App\Http\Controllers\SearchController::class, 'searchPLZ'])->name('search.plz');
+        Route::get('contract/{id}/accept', [App\Http\Controllers\ContractController::class, 'accept'])->name('contract.accept');
 
     });
 
@@ -33,7 +34,7 @@ Route::group(['middleware' => 'auth'], function() {
 
         Route::get('contract/create', [App\Http\Controllers\ContractController::class, 'create'])->name('contract.create');
         Route::post('contract/store', [App\Http\Controllers\ContractController::class, 'store'])->name('contract.store');
-        Route::get('contract/show/{id}', [App\Http\Controllers\ContractController::class, 'show'])->name('contract.show');
+        Route::get('contract/{id}/show', [App\Http\Controllers\ContractController::class, 'show'])->name('contract.show');
 
     });
 
