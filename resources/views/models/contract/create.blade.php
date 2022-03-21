@@ -6,7 +6,7 @@
     <div class="card col-md-6 offset-md-3">
 
         <div class="card-header text-center">
-            <h4>Beekeeper-Register</h4>
+            <h4>Contract-Create</h4>
         </div>
         <div class="card-body">
             <form method="POST" action="{{ route('contract.store') }}">
@@ -14,7 +14,7 @@
                 @method('POST')
 
                 @error('plz-api')
-                    <x-forms.alert message="{{ $message }}" type="danger" />
+                    <x-forms.alert title="Error" message="{{ $message }}" type="danger" />
                 @enderror
 
                 <x-forms.number name="lat" title="Latitude"  min="47" max="48" placeholder="47.39036" value="{{ old('lat') }}" step=".00001" />

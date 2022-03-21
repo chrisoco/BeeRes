@@ -6,6 +6,14 @@ use Illuminate\View\Component;
 
 class Alert extends Component
 {
+
+    /**
+     * The alert message.
+     *
+     * @var string
+     */
+    public $title;
+
     /**
      * The alert message.
      *
@@ -25,10 +33,11 @@ class Alert extends Component
      *
      * @return void
      */
-    public function __construct($message, $type)
+    public function __construct($title, $message, $type)
     {
+        $this->title   = $title;
         $this->message = $message;
-        $this->type = $type;
+        $this->type    = $type;
     }
 
     /**
