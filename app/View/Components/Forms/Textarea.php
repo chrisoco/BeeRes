@@ -28,15 +28,23 @@ class Textarea extends Component
     public $value;
 
     /**
+     * The alert message.
+     *
+     * @var boolean
+     */
+    public $required;
+
+    /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($name, $title, $value)
+    public function __construct($name, $title, $value, $required = 'true')
     {
         $this->name  = $name;
         $this->title = $title;
         $this->value = $value;
+        $this->required = $required == 'true';
     }
 
     /**

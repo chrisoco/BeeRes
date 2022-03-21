@@ -35,16 +35,24 @@ class Input extends Component
     public $value;
 
     /**
+     * The alert message.
+     *
+     * @var boolean
+     */
+    public $required;
+
+    /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($type, $name, $title, $value)
+    public function __construct($type, $name, $title, $value, $required = 'true')
     {
         $this->type  = $type;
         $this->name  = $name;
         $this->title = $title;
         $this->value = $value;
+        $this->required = $required == 'true';
     }
 
     /**
