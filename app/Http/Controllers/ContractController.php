@@ -99,7 +99,10 @@ class ContractController extends Controller
 
         $contract = Contract::create($validated);
 
-        // return view with contract created successful and overview of contract.
+        // NOTIFY IMKER
+        NotificationController::notifyBeekeeperNewContract($contract);
+
+
         return redirect(route('contract.show', $contract->id));
 
     }
