@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * @property integer $id
@@ -21,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Beekeeper extends Model
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     /**
      * The "type" of the auto-incrementing ID.
@@ -40,6 +41,18 @@ class Beekeeper extends Model
     {
         return $this->firstname .' '. $this->lastname;
     }
+
+    /**
+     * Route notifications for the Nexmo channel.
+     *
+     * @param  \Illuminate\Notifications\Notification  $notification
+     * @return string
+     */
+    public function routeNotificationForNexmo($notification)
+    {
+        return $this->phone;
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

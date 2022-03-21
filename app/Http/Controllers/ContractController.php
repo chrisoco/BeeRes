@@ -100,6 +100,7 @@ class ContractController extends Controller
         $contract = Contract::create($validated);
 
         // NOTIFY IMKER
+        // TODO: Implement as Observer on Contract Create?
         NotificationController::notifyBeekeeperNewContract($contract);
 
 
