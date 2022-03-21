@@ -47,6 +47,13 @@ class Number extends Component
      *
      * @var string
      */
+    public $step;
+
+    /**
+     * The alert message.
+     *
+     * @var string
+     */
     public $placeholder;
 
     /**
@@ -61,13 +68,14 @@ class Number extends Component
      *
      * @return void
      */
-    public function __construct($name, $title, $value, $min, $max, $placeholder, $required = 'true')
+    public function __construct($name, $title, $value, $min, $max, $step, $placeholder, $required = 'true')
     {
         $this->name  = $name;
         $this->title = $title;
         $this->value = $value;
         $this->min   = $min;
         $this->max   = $max;
+        $this->step  = $step;
         $this->placeholder = $placeholder;
         $this->required    = $required == 'true';
     }
