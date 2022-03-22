@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Postcode $postcode
  * @property User $created_by_user
  * @property Beekeeper[] $beekeepers
+ * @property bool $hasOptionalInfo
  */
 class Contract extends Model
 {
@@ -38,6 +39,11 @@ class Contract extends Model
      * @var array
      */
     protected $fillable = ['beekeeper_id', 'postcode_id', 'created_by', 'lon', 'lat', 'contact_firstname', 'contact_lastname', 'contact_phone', 'info', 'created_at', 'updated_at'];
+
+    public function getHasOptionalInfoAttribute() :bool
+    {
+        return ($this->contact_firstname || $this->contact_lastname || $this->contact_phone || $this->info);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

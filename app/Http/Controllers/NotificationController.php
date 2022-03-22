@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contract;
 use App\Notifications\ContractApplicableNotification;
+use App\Notifications\ContractAssignedNotification;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
@@ -28,5 +29,10 @@ class NotificationController extends Controller
         }
 
 
+    }
+
+    public static function notifyBeekeeperContractAssigned(Contract $contract)
+    {
+        $contract->beekeeper->notify(new ContractAssignedNotification($contract));
     }
 }
