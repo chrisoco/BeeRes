@@ -38,12 +38,10 @@ class ContractController extends Controller
     public function store(Request $request)
     {
 
-        if(array_key_exists('contact_phone', $request->all())) {
-            $request->merge([
-                'contact_phone' => replaceEmptyChars($request->all()['contact_phone']),
-                'created_by' => auth()->user()->id,
-            ]);
-        }
+        $request->merge([
+            'contact_phone' => replaceEmptyChars($request->all()['contact_phone']),
+            'created_by' => auth()->user()->id,
+        ]);
 
         $validator = Validator::make($request->all(), [
             'lat'               => ['required', 'numeric', 'min:47', 'max:48'],
@@ -70,6 +68,8 @@ class ContractController extends Controller
         }
 
         $validated = $validator->validated();
+
+        ddd($validated);
 
         if(array_key_exists('plz', $validated) && !is_null($validated['plz'])) {
 
