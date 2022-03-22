@@ -19,7 +19,6 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function() {
 
-
     Route::group(['middleware' => 'beekeeperOnly'], function() {
 
         Route::get('profile', [App\Http\Controllers\BeekeeperController::class, 'profile'])->name('profile');
@@ -27,6 +26,9 @@ Route::group(['middleware' => 'auth'], function() {
         Route::post('jurisdiction/update', [App\Http\Controllers\BeekeeperController::class, 'updateJurisdiction'])->name('jurisdiction.update');
         Route::get('search/plz', [App\Http\Controllers\SearchController::class, 'searchPLZ'])->name('search.plz');
         Route::get('contract/{id}/accept', [App\Http\Controllers\ContractController::class, 'accept'])->name('contract.accept');
+        Route::get('contract/taken', [App\Http\Controllers\ContractController::class, 'taken'])->name('contract.taken');
+        Route::get('contract/{id}/success', [App\Http\Controllers\ContractController::class, 'success'])->name('contract.accept.success');
+        Route::post('contract/{id}/accept', [App\Http\Controllers\ContractController::class, 'acceptContract'])->name('contract.accept');
 
     });
 

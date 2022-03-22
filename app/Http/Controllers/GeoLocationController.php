@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Postcode;
 use Illuminate\Support\Facades\Http;
 
-class NominatimController extends Controller
+class GeoLocationController extends Controller
 {
-    public static function getPLZ($lat, $lon)
+    public static function getPlzFromLatLon($lat, $lon)
     {
 
         $res = Http::get('https://nominatim.openstreetmap.org/reverse?lat='. $lat .'&lon='. $lon .'&format=json');
@@ -26,5 +26,10 @@ class NominatimController extends Controller
 
         return null;
 
+    }
+
+    public static function generateGoogleMapsPin($lat, $lon):string
+    {
+        return 'https://www.google.com/maps/search/?api=1&query='.$lat.'%2C'.$lon;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\Contract;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\NexmoMessage;
@@ -18,7 +19,7 @@ class ContractApplicableNotification extends Notification implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($contract)
+    public function __construct(Contract $contract)
     {
         $this->contract = $contract;
     }
@@ -43,7 +44,7 @@ class ContractApplicableNotification extends Notification implements ShouldQueue
     public function toNexmo($notifiable)
     {
         return (new NexmoMessage)
-            ->content('You have been selected for a new Beekeeper job! Apply here: '.
+            ->content("You have been selected for a new Beekeeper job! \nApply here: \n".
                 route('contract.accept', $this->contract->id));
     }
 

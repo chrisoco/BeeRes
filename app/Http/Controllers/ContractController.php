@@ -78,7 +78,7 @@ class ContractController extends Controller
         } else {
 
             // GET PLZ NOMINATIM
-            $postcode = NominatimController::getPLZ($validated['lat'], $validated['lon']);
+            $postcode = GeoLocationController::getPlzFromLatLon($validated['lat'], $validated['lon']);
 
             if (is_null($postcode)) {
                 // Add validation failed.
@@ -121,15 +121,63 @@ class ContractController extends Controller
         return view('models.contract.show', ['contract' => $contract]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+    public function accept($id)
     {
-        //
+        $contract = Contract::findOrFail($id);
+
+        if($contract->beekeeper) {
+            if($contract->beekeeper->id == auth()->user()->beekeeper->id) {
+                return redirect(route('contract.accept.success', $contract));
+            }
+            return redirect(route('contract.taken'));
+        }
+
+        if(! $contract->beekeepers->pluck('id')->contains(auth()->user()->beekeeper->id)) return redirect(route('index'));
+
+
+        return view('models.contract.accept', ['contract' => $contract]);
+
+    }
+
+    public function taken()
+    {
+        return view('models.contract.taken');
+    }
+
+    public function success($id)
+    {
+        $contract = Contract::findOrFail($id);
+
+        if($contract->beekeeper && $contract->beekeeper->id == auth()->user()->beekeeper->id) {
+            return view('models.contract.success', ['contract' => $contract]);
+        }
+        return redirect(route('contract.taken'));
+    }
+
+    public function acceptContract(Request $request, $id)
+    {
+        $contract = Contract::findOrFail($id);
+
+        if($contract->beekeeper) return redirect(route('contract.taken'));
+
+        if(! $contract->beekeepers->pluck('id')->contains(auth()->user()->beekeeper->id)) return redirect(route('index'));
+
+        $request->validate([
+            'acc' => ['required']
+        ], [
+            'required' => 'The terms and conditions are required!'
+        ]);
+
+
+        $contract->beekeeper()->associate(auth()->user()->beekeeper)->save();
+
+
+        // Notify detail Info per SMS.
+        NotificationController::notifyBeekeeperContractAssigned($contract);
+
+        return redirect(route('contract.accept.success', $contract));
+
     }
 
     /**
