@@ -69,8 +69,6 @@ class ContractController extends Controller
 
         $validated = $validator->validated();
 
-        ddd($validated);
-
         if(array_key_exists('plz', $validated) && !is_null($validated['plz'])) {
 
             $validated['postcode_id'] = Postcode::where('postcode', $validated['plz'])->first()->id;
