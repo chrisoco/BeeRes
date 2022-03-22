@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contract;
+use App\Notifications\ContractApplicableNotification;
+use App\Notifications\ContractAssignedNotification;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
 {
     public static function notifyBeekeeperNewContract(Contract $contract)
     {
-
-
 
         // Find all Beekeepers from Region:
         $beekeepers = $contract->postcode->beekeepers;
@@ -21,29 +21,18 @@ class NotificationController extends Controller
 
         }
 
-        $failed = [];
-
         foreach ($beekeepers as $beekeeper) {
 
-            $msg = 'Dear ' . $beekeeper->fullName . ', ' .
-                'You have been selected for a new Beekeeper job! Apply here: ' .
-                route('contract.accept', $contract->id);
-
             $beekeeper->contracts_applicable()->attach($contract);
-            // $success = SmsController::sendSmsNotification($beekeeper->phone, $msg);
-            $success = true;
-
-            if(! $success) {
-                $failed[] = $beekeeper;
-            }
+            $beekeeper->notify(new ContractApplicableNotification($contract));
 
         }
 
-        if(count($failed) > 0) {
-            // Notify E-Mail $contract->created_by_user
-        }
 
+    }
 
-
+    public static function notifyBeekeeperContractAssigned(Contract $contract)
+    {
+        $contract->beekeeper->notify(new ContractAssignedNotification($contract));
     }
 }

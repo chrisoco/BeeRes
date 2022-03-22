@@ -16,7 +16,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string $remember_token
  * @property string $created_at
  * @property string $updated_at
- * @property Beekeeper[] $beekeepers
+ * @property Beekeeper $beekeeper
  * @property Contract[] $contracts
  */
 class User extends Authenticatable
