@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = 'profile';
 
     /**
      * Create a new controller instance.
@@ -51,6 +51,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
 
+        // TODO: formatPhoneNum($data['phone']) and Replace phone wierd Regex to validate 41765813596
         $data['phone'] = replaceEmptyChars($data['phone']);
 
         return Validator::make($data, [
