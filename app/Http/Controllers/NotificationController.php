@@ -17,7 +17,7 @@ class NotificationController extends Controller
 
         if(count($beekeepers) == 0) {
 
-            // Search nearest Beekeepers and add to $beekeepers.
+            $beekeepers = SearchController::findClosestBeekeeper($contract->postcode->postcode)->take(2);
 
         }
 
