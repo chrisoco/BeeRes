@@ -99,7 +99,9 @@ class ContractController extends Controller
 
         // NOTIFY IMKER
         // TODO: Implement as Observer on Contract Create?
-        NotificationController::notifyBeekeeperNewContract($contract);
+
+
+        // NotificationController::notifyBeekeeperNewContract($contract);
 
 
         return redirect(route('contract.show', $contract->id));
@@ -172,7 +174,7 @@ class ContractController extends Controller
 
 
         // Notify detail Info per SMS.
-        NotificationController::notifyBeekeeperContractAssigned($contract);
+        // NotificationController::notifyBeekeeperContractAssigned($contract);
 
         return redirect(route('contract.accept.success', $contract));
 

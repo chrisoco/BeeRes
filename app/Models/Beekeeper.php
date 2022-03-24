@@ -11,6 +11,7 @@ use Illuminate\Notifications\Notifiable;
  * @property integer $user_id
  * @property string $firstname
  * @property string $lastname
+ * @property string $fullName
  * @property string $phone
  * @property string $phone_verified_at
  * @property string $created_at
@@ -40,6 +41,23 @@ class Beekeeper extends Model
     public function getFullNameAttribute()
     {
         return $this->firstname .' '. $this->lastname;
+    }
+
+    public function getFormattedPhoneAttribute()
+    {
+        return reverseFormatPhoneNum($this->phone);
+    }
+
+    public function getJurisdictionsToStringAttribute()
+    {
+        $res = '';
+
+        foreach ($this->postcodes()->pluck('name', 'postcode') as $postcode => $name) {
+            $res .= $postcode.' '.$name.', ';
+        }
+
+        return substr($res, 0, strlen($res) - 2);
+
     }
 
     /**

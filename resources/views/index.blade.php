@@ -14,17 +14,17 @@
 
 @section('content')
 @auth
-    IMKER SEARCH
+    @include('imker_search')
 @else
 
     <div class="container-fluid">
         <div class="row" style="min-height: 70vh;">
 
-            <div class="col-md-6 col-md-border d-flex justify-content-center justify-content-md-end mb-5 pe-md-5">
+            <div class="col-md-6 col-md-border d-flex justify-content-center m-auto">
 
-                <div class="h-100">
+                <div class="h-100 w-100">
 
-                    IMKER-Search
+                    @include('imker_search')
 
                 </div>
 
@@ -32,7 +32,7 @@
 
             <div class="col-md-6 col-md-border d-flex justify-content-center m-auto">
 
-                <div class="w-100">
+                <div class="w-100 w-100">
 
                     @include('auth.login')
 
