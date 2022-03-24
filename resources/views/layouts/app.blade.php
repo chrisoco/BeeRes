@@ -28,7 +28,7 @@
 <body>
     <div id="app">
         @include('layouts.inc.navbar')
-        <div class="container-fluid">
+        <div class="container-fluid mb-5">
             @yield('content')
         </div>
         @include('layouts.inc.footer')
