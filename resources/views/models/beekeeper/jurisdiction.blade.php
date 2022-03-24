@@ -19,10 +19,10 @@
         <!-- LEFT SIDE -->
         <div class="col-md-6 col-md-border d-flex justify-content-center m-auto">
             <div class="h-100 w-100">
-                <div class="card col-lg-8 offset-lg-2 mb-2 mb-lg-0">
+                <div class="card col-lg-8 offset-lg-2 mb-2 mb-md-0">
                     <div class="card-header text-center"><h4>Active PLZ</h4></div>
 
-                    <div class="card-body overflow-auto" style="height: 20rem">
+                    <div class="card-body overflow-auto" style="height: 21rem">
 
                         <form action="{{ route('jurisdiction.update') }}" method="POST" id="jurisdictionForm">
                             @csrf
@@ -59,11 +59,16 @@
                 <div class="card col-lg-8 offset-lg-2 mb-2 mb-lg-0">
                     <div class="card-header text-center"><h4>Search PLZ</h4></div>
 
-                    <div class="card-body" style="height: 20rem">
+                    <div class="card-body" style="height: 21rem">
 
-                        <input type="text" class="form-control" id="searchInput" onkeyup="search(this)" placeholder="PLZ Search" autocomplete="off">
+                        <div class="input-group mb-1">
+                            <input type="text" class="form-control" id="searchInput" onkeyup="search(this)" placeholder="PLZ Search" autocomplete="off" aria-describedby="basic-addon">
+                            <div class="input-group-append">
+                                <span class="input-group-text h-100" id="basic-addon"><i class="fa-solid fa-3 fa-magnifying-glass"></i></span>
+                            </div>
+                        </div>
 
-                        <div class="list-group overflow-auto" style="max-height: 15.5rem" id="searchOutput"></div>
+                        <div class="list-group overflow-auto border" style="max-height: 16.5rem" id="searchOutput"></div>
 
                     </div>
                 </div>
