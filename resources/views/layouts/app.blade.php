@@ -27,11 +27,11 @@
 </head>
 <body>
     <div id="app">
-
         @include('layouts.inc.navbar')
-        @yield('content')
+        <div class="container-fluid">
+            @yield('content')
+        </div>
         @include('layouts.inc.footer')
-
     </div>
 </body>
 </html>

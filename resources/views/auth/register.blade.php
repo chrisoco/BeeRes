@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container">
-
     <div class="card col-md-6 offset-md-3">
 
         <div class="card-header text-center">
@@ -32,7 +31,5 @@
             </form>
         </div>
     </div>
-
 </div>
-
 @endsection

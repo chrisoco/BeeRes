@@ -1,19 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
     <!--
     <div class="col-md-6 offset-md-3">
     <x-forms.alert title="SUCCESS" message="Contract Created Successfully!" type="success" />
     </div>
     -->
     <div class="card col-md-6 offset-md-3">
-
         <div class="card-header text-center">
             <h4>Contract Overview #{{ $contract->id }}</h4>
         </div>
         <div class="card-body">
-
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -56,11 +53,6 @@
                     </tr>
                 </tbody>
             </table>
-
-
         </div>
     </div>
-
-</div>
-
 @endsection
