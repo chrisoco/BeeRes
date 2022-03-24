@@ -23,7 +23,7 @@
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="me-2">{{ auth()->user()->email }}</span><i class="fa-solid fa-user-gear"></i><span class="caret"></span>
                         </a>
-                        <ul class="dropdown-menu mt-md-2" aria-labelledby="dropdown">
+                        <ul class="dropdown-menu mt-md-2">
                             @beekeeper
                                 <li class="nav-item">
                                     <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
