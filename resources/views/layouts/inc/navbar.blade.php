@@ -8,20 +8,27 @@
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 @admin
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ route('contract.create') }}">Create Contract</a>
+                        <a class="nav-link" href="{{ route('contract.create') }}">Create Contract</a>
                     </li>
                 @endadmin
+                @beekeeper
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('jurisdiction') }}">Jurisdictions</a>
+                    </li>
+                @endbeekeeper
             </ul>
             <ul class="navbar-nav ml-auto">
                 @auth
-                    <li class="nav-item mx-5">
-                        <span class="nav-link">{{ auth()->user()->email }}</span>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-user-gear"></i></i><span class="caret"></span>
+                            <span class="me-2">{{ auth()->user()->email }}</span><i class="fa-solid fa-user-gear"></i><span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu mt-md-2" aria-labelledby="dropdown">
+                            @beekeeper
+                                <li class="nav-item">
+                                    <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
+                                </li>
+                            @endbeekeeper
                             <li>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                     @csrf
