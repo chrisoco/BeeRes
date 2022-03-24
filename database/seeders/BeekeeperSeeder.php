@@ -16,5 +16,6 @@ class BeekeeperSeeder extends Seeder
     public function run()
     {
         User::factory()->count(20)->has(Beekeeper::factory())->create();
+        User::factory(['email' => 'jon@doe.ch'])->has(Beekeeper::factory(['firstname' => 'Jon', 'lastname' => 'Doe']))->create();
     }
 }
