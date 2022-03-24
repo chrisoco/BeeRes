@@ -46,7 +46,7 @@
 
         function add(el, id) {
 
-            el.setAttribute('onclick', null);
+            el.removeAttribute('onclick');
             el.classList.remove('oldSearch');
             el.style.border = '1px solid green';
             el.innerHTML    = el.innerHTML + '<button type="button" class="btn btn-danger float-end" onclick="reverseAdd('+id+', this.parentElement)">X</button>';
