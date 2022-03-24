@@ -80,8 +80,6 @@
 
     function insertBeekeeper(beekeeper) {
 
-        console.log(beekeeper);
-
         let jurEl = document.createElement('p');
         jurEl.setAttribute('class', 'small');
         jurEl.innerHTML = beekeeper.jurisdictionsToString;

@@ -6,6 +6,7 @@ use App\Models\Beekeeper;
 use App\Models\Postcode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class SearchController extends Controller
 {
@@ -51,16 +52,44 @@ class SearchController extends Controller
     public static function guestSearchBeekeeper(Request $request)
     {
 
-        if($request->input('postcode_id')) {
+        $validator = Validator::make($request->all(), [
+            'postcode_id' => ['required', 'exists:App\Models\Postcode,id'],
+        ]);
 
+        if(! $validator->fails()) {
 
-            // return Response($data);
+            $validated = $validator->validated();
+            $postcode  = Postcode::find($validated['postcode_id']);
+
+            $beekeepers = self::findClosestBeekeeper($postcode->postcode);
+
+            return Response($beekeepers->take(5)->map->only('fullName', 'formattedPhone', 'jurisdictionsToString'));
 
         }
 
-        return Response(Beekeeper::all()->take(5)->map->only('fullName', 'formattedPhone', 'jurisdictionsToString'));
+        return null;
 
     }
+
+
+    public static function findClosestBeekeeper($postcode)
+    {
+        $data = DB::table('beekeepers')
+            ->join('beekeeper_postcode', 'beekeeper_postcode.beekeeper_id', '=', 'beekeepers.id')
+            ->join('postcodes', 'beekeeper_postcode.postcode_id', '=', 'postcodes.id')
+            ->selectRaw('beekeepers.id, min(abs('.$postcode.' - postcodes.postcode)) AS mindiff')
+            ->groupBy('beekeepers.id')
+            ->orderBy('mindiff')
+            ->pluck('beekeepers.id');
+
+        $beekeepers = Beekeeper::all();
+
+        return $data->map(function($id) use($beekeepers) {
+            return $beekeepers->where('id', $id)->first();
+        });
+
+    }
+
 }
 
 
