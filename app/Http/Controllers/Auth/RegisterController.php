@@ -51,13 +51,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
 
-        // TODO: formatPhoneNum($data['phone']) and Replace phone wierd Regex to validate 41765813596
-        $data['phone'] = replaceEmptyChars($data['phone']);
+        $data['phone'] = formatPhoneNum($data['phone']);
 
         return Validator::make($data, [
             'firstname' => ['required', 'string', 'max:255'],
             'lastname'  => ['required', 'string', 'max:255'],
-            'phone'     => ['required', 'regex:/^(?:00[1-9]{2}|0|\+[1-9]{2})(\d{9})$/', 'unique:beekeepers'],
+            'phone'     => ['required', 'regex:/^41\d{9}$/', 'unique:beekeepers'],
             'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password'  => ['required', 'string', 'min:8', 'regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/', 'confirmed'],
             'agb'       => ['required']
