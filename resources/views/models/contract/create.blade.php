@@ -33,7 +33,7 @@
                 <x-forms.textarea name="info" title="Additional Information" value="{{ old('info') }}" required="false" />
 
 
-                <input class="btn btn-block btn-primary mt-3" type="submit" value="Register" />
+                <input class="btn btn-block btn-primary mt-3" type="submit" value="Create Contract" />
 
             </form>
         </div>
