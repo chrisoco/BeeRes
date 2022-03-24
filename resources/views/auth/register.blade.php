@@ -19,9 +19,9 @@
                 <x-forms.input type="email" name="email"     title="E-Mail"    value="{{ old('email') }}" />
                 <x-forms.password confirm="true" />
 
-                <div class="form-group">
+                <div class="form-group mt-4">
                     <input class="@error('agb') is-invalid @enderror" type="checkbox" name="agb" id="agb">
-                    <label class="form-label mt-4" for="agb">AGB Accepted<span class="text-danger">*</span></label>
+                    <span>I hereby confirm that I have taken note that my contact information may be disclosed for the beekeeper search<span class="text-danger">*</span></span>
                     @error('agb')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
