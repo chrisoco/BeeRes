@@ -15,8 +15,8 @@ class LoginController extends Controller
     |--------------------------------------------------------------------------
     |
     | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
+    | redirecting them to the home screen. The controller uses a trait
+    | to conveniently provide its functionality.
     |
     */
 
@@ -26,7 +26,7 @@ class LoginController extends Controller
      * Where to redirect Users to based on role
      * @return string
      */
-    public function redirectTo()
+    public function redirectTo():string
     {
         return Auth::user()->is_admin ? '/contract/create':'/profile';
     }

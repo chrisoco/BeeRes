@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Validator;
 class BeekeeperController extends Controller
 {
 
+    /**
+     * Show the form to edit Beekeeper (Profile).
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function profile()
     {
         return view('models.beekeeper.profile', [
@@ -15,7 +20,11 @@ class BeekeeperController extends Controller
         ]);
     }
 
-
+    /**
+     * Show the form to edit Jurisdictions.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function jurisdiction()
     {
         return view('models.beekeeper.jurisdiction', [
@@ -24,7 +33,7 @@ class BeekeeperController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update jurisdictions of Beekeeper in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -34,13 +43,14 @@ class BeekeeperController extends Controller
 
         $validator = Validator::make($request->all(), [
             'delJur'   => ['array'],
-            'delJur.*' => ['integer', 'exists:App\Models\Postcode,id'],
             'addJur'   => ['array'],
-            'addJur.*' => ['integer', 'exists:App\Models\Postcode,id'],
+            'delJur.*' => ['integer', 'exists:App\Models\Postcode,id'], // Validate each content of Array
+            'addJur.*' => ['integer', 'exists:App\Models\Postcode,id'], // Validate each content of Array
         ]);
 
         if(!$validator->fails()) {
 
+            // Get Relation of Postcodes from Authenticated Beekeeper
             $postcodes = auth()->user()->beekeeper->postcodes();
 
             if(isset($validator->validated()['addJur'])) $postcodes->attach($validator->validated()['addJur']);

@@ -1,6 +1,8 @@
 <?php
 
     /**
+     * Replace empty chars and - from string.
+     *
      * @param $phone
      * @return string
      */
@@ -14,6 +16,7 @@
 
     /**
      * Convert Phone number to Nominatim expected Number
+     * with added countrycode 41.
      *
      * Input: 0765813596 | 0041765813596 | +41765813596
      * Output: 41765813596
@@ -38,6 +41,13 @@
         return $phone;
     }
 
+    /**
+     * Reverse Phone format from db:
+     * 417658135 to 076 581 35 96.
+     *
+     * @param $phone
+     * @return string
+     */
     function reverseFormatPhoneNum($phone): string
     {
         $num[0] = substr($phone, 2, 2);

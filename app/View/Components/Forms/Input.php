@@ -7,42 +7,42 @@ use Illuminate\View\Component;
 class Input extends Component
 {
     /**
-     * The alert type.
+     * The input type.
      *
      * @var string
      */
     public $type;
 
     /**
-     * The alert message.
+     * The input name.
      *
      * @var string
      */
     public $name;
 
     /**
-     * The alert message.
+     * The input title.
      *
      * @var string
      */
     public $title;
 
     /**
-     * The alert message.
+     * The input value.
      *
      * @var string
      */
     public $value;
 
     /**
-     * The alert message.
+     * If the input is required.
      *
      * @var boolean
      */
     public $required;
 
     /**
-     * The alert message.
+     * The input placeholder.
      *
      * @var string
      */
@@ -51,7 +51,12 @@ class Input extends Component
     /**
      * Create a new component instance.
      *
-     * @return void
+     * @param $type
+     * @param $name
+     * @param $title
+     * @param $value
+     * @param $required
+     * @param $placeholder
      */
     public function __construct($type, $name, $title, $value, $required = 'true', $placeholder = '')
     {

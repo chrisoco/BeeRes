@@ -9,7 +9,8 @@ use Illuminate\Database\Seeder;
 class BeekeeperContractSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Add random 1-5 applicable contracts to each beekeeper
+     * Add all random assigned Contracts to also be applicable
      *
      * @return void
      */

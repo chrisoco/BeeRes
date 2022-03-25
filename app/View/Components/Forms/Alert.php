@@ -8,7 +8,7 @@ class Alert extends Component
 {
 
     /**
-     * The alert message.
+     * The alert title.
      *
      * @var string
      */
@@ -22,16 +22,18 @@ class Alert extends Component
     public $message;
 
     /**
-     * The alert message.
+     * The alert type.
      *
-     * @var boolean
+     * @var string
      */
     public $type;
 
     /**
      * Create a new component instance.
      *
-     * @return void
+     * @param $title
+     * @param $message
+     * @param $type
      */
     public function __construct($title, $message, $type)
     {

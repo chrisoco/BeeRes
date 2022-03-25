@@ -1,10 +1,17 @@
 /*
- *
- *
- *
- */
+|--------------------------------------------------------------------------
+| Jurisdiction JS
+|--------------------------------------------------------------------------
+|
+| Handles all JS for the beekeeper jurisdiction and plz search.
+|
+*/
+
+// Define output element
+const searchRes = document.getElementById('searchOutput');
 
 /**
+ * Add selected PLZ to Delete
  *
  * @param id
  * @param el
@@ -15,6 +22,7 @@ function del(id, el) {
 
     let duplicate = false;
 
+    // Eval is PLZ should be delete or revert de deletion
     document.getElementsByName('delJur[]').forEach(element => {
         if(element.value == id) {
             duplicate = true;
@@ -22,6 +30,7 @@ function del(id, el) {
         }
     });
 
+    // revert if duplicate found else add to delete
     if(duplicate) {
         el.style.border = '1px solid rgba(0, 0, 0, 0.125)';
 
@@ -38,6 +47,12 @@ function del(id, el) {
 
 }
 
+/**
+ * Add PLZ from Search result to form.
+ *
+ * @param el
+ * @param id
+ */
 function add(el, id) {
 
     el.removeAttribute('onclick');
@@ -57,6 +72,12 @@ function add(el, id) {
 
 }
 
+/**
+ * Reverse a frontend Only added PLZ from form
+ *
+ * @param id
+ * @param el
+ */
 function reverseAdd(id, el) {
     document.getElementsByName('addJur[]').forEach(element => {
         if(element.value == id) {
@@ -66,8 +87,11 @@ function reverseAdd(id, el) {
     el.remove();
 }
 
-const searchRes = document.getElementById('searchOutput');
-
+/**
+ * Request Search of PLZ
+ *
+ * @param e
+ */
 function search (e) {
 
     $.ajax({
@@ -87,6 +111,11 @@ function search (e) {
 
 }
 
+/**
+ * Append Postcode information in search result.
+ *
+ * @param postcode
+ */
 function insert(postcode) {
 
     let el = document.createElement('div');

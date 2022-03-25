@@ -35,21 +35,37 @@ class Beekeeper extends Model
     protected $keyType = 'integer';
 
     /**
+     * Model attributes in Database.
+     *
      * @var array
      */
     protected $fillable = ['user_id', 'firstname', 'lastname', 'phone', 'phone_verified_at', 'created_at', 'updated_at'];
 
-
+    /**
+     * Concat firstname and lastname.
+     *
+     * @return string
+     */
     public function getFullNameAttribute():string
     {
         return $this->firstname .' '. $this->lastname;
     }
 
+    /**
+     * Reverse Phone format from with countrycode 41x to 0x for Views.
+     *
+     * @return string
+     */
     public function getReverseFormattedPhoneAttribute():string
     {
         return reverseFormatPhoneNum($this->phone);
     }
 
+    /**
+     * Concat jurisdictions to string for Views.
+     *
+     * @return string
+     */
     public function getJurisdictionsToStringAttribute():string
     {
         $res = '';

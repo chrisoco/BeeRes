@@ -17,7 +17,7 @@ class ContractApplicableNotification extends Notification implements ShouldQueue
     /**
      * Create a new notification instance.
      *
-     * @return void
+     * @param Contract $contract
      */
     public function __construct(Contract $contract)
     {

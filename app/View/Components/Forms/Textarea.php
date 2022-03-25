@@ -7,28 +7,28 @@ use Illuminate\View\Component;
 class Textarea extends Component
 {
     /**
-     * The alert type.
+     * The textarea name.
      *
      * @var string
      */
     public $name;
 
     /**
-     * The alert type.
+     * The textarea title.
      *
      * @var string
      */
     public $title;
 
     /**
-     * The alert type.
+     * The textarea value.
      *
      * @var string
      */
     public $value;
 
     /**
-     * The alert message.
+     * If the textarea is required.
      *
      * @var boolean
      */
@@ -37,13 +37,16 @@ class Textarea extends Component
     /**
      * Create a new component instance.
      *
-     * @return void
+     * @param $name
+     * @param $title
+     * @param $value
+     * @param $required
      */
     public function __construct($name, $title, $value, $required = 'true')
     {
-        $this->name  = $name;
-        $this->title = $title;
-        $this->value = $value;
+        $this->name     = $name;
+        $this->title    = $title;
+        $this->value    = $value;
         $this->required = $required == 'true';
     }
 

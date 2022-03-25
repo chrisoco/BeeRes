@@ -1,12 +1,21 @@
 /*
- *
- *
- *
- */
+|--------------------------------------------------------------------------
+| Imker Search JS
+|--------------------------------------------------------------------------
+|
+| Handles all JS for the beekeeper and plz search.
+|
+*/
 
+// Define output elements
 const plzSearch       = document.getElementById('plzSearchOutput');
 const beekeeperSearch = document.getElementById('beekeeperSearchOutput');
 
+/**
+ * Request Search of PLZ
+ *
+ * @param e
+ */
 function searchPlz (e) {
 
     $.ajax({
@@ -26,6 +35,11 @@ function searchPlz (e) {
 
 }
 
+/**
+ * Append Postcode information in search result.
+ *
+ * @param postcode
+ */
 function insertPLZ(postcode) {
 
     let el = document.createElement('div');
@@ -37,6 +51,12 @@ function insertPLZ(postcode) {
 
 }
 
+/**
+ * Select PLZ from PLZ search result & search for beekeeper
+ *
+ * @param e
+ * @param postcode_id
+ */
 function selectPostcode(e, postcode_id) {
 
     document.getElementById('searchInput').value = e.innerHTML;
@@ -46,6 +66,11 @@ function selectPostcode(e, postcode_id) {
 
 }
 
+/**
+ * Request Search of Beekeeper
+ *
+ * @param postcode_id
+ */
 function searchBeekeeper(postcode_id) {
 
     $.ajax({
@@ -65,6 +90,11 @@ function searchBeekeeper(postcode_id) {
 
 }
 
+/**
+ * Append Beekeeper information in search result.
+ *
+ * @param beekeeper
+ */
 function insertBeekeeper(beekeeper) {
 
     let jurEl = document.createElement('p');
@@ -74,7 +104,7 @@ function insertBeekeeper(beekeeper) {
 
     let el = document.createElement('div');
     el.setAttribute('class', 'list-group-item list-group-item-action oldSearch');
-    el.innerHTML = beekeeper.fullName + '<br>' + beekeeper.formattedPhone;
+    el.innerHTML = beekeeper.fullName + '<br>' + beekeeper.reverseFormattedPhone;
     el.append(jurEl);
 
     beekeeperSearch.appendChild(el);

@@ -27,10 +27,17 @@ class Postcode extends Model
     protected $keyType = 'integer';
 
     /**
+     * Model attributes in Database.
+     *
      * @var array
      */
     protected $fillable = ['postcode', 'name', 'created_at', 'updated_at'];
 
+    /**
+     * Concat postcode and name.
+     *
+     * @return string
+     */
     public function getCodeNameAttribute() :string
     {
         return $this->postcode .' '. $this->name;

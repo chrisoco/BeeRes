@@ -36,10 +36,17 @@ class Contract extends Model
     protected $keyType = 'integer';
 
     /**
+     * Model attributes in Database.
+     *
      * @var array
      */
     protected $fillable = ['beekeeper_id', 'postcode_id', 'created_by', 'lon', 'lat', 'contact_firstname', 'contact_lastname', 'contact_phone', 'info', 'created_at', 'updated_at'];
 
+    /**
+     * Evaluate if optional fields contain data.
+     *
+     * @return bool
+     */
     public function getHasOptionalInfoAttribute() :bool
     {
         return ($this->contact_firstname || $this->contact_lastname || $this->contact_phone || $this->info);

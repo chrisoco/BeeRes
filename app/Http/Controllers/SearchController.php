@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Validator;
 
 class SearchController extends Controller
 {
+
+    /**
+     * LiveSearch Postcodes by postcode or name for beekeepers.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public static function searchPLZ(Request $request)
     {
 
@@ -30,6 +37,12 @@ class SearchController extends Controller
 
     }
 
+    /**
+     * LiveSearch Postcodes by postcode or name for guests.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public static function guestSearchPLZ(Request $request)
     {
 
@@ -49,9 +62,17 @@ class SearchController extends Controller
 
     }
 
+    /**
+     * LiveSearch the closest proximity of Beekeepers to postcode for guests.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public static function guestSearchBeekeeper(Request $request)
     {
 
+        // Validate if provided postcode exists
         $validator = Validator::make($request->all(), [
             'postcode_id' => ['required', 'exists:App\Models\Postcode,id'],
         ]);
@@ -63,6 +84,7 @@ class SearchController extends Controller
 
             $beekeepers = self::findClosestBeekeeper($postcode->postcode);
 
+            // Only return the full Name, formatted Phone Number and Jurisdictions
             return Response($beekeepers->take(5)->map->only(['fullName', 'reverseFormattedPhone', 'jurisdictionsToString']));
 
         }
@@ -71,10 +93,15 @@ class SearchController extends Controller
 
     }
 
-
+    /**
+     * Search the closest proximity Beekeepers by postcode.
+     *
+     * @param $postcode
+     * @return \Illuminate\Support\Collection
+     */
     public static function findClosestBeekeeper($postcode)
     {
-        $data = DB::table('beekeepers')
+        $sortedBeekeeperIds = DB::table('beekeepers')
             ->join('beekeeper_postcode', 'beekeeper_postcode.beekeeper_id', '=', 'beekeepers.id')
             ->join('postcodes', 'beekeeper_postcode.postcode_id', '=', 'postcodes.id')
             ->selectRaw('beekeepers.id, min(abs('.$postcode.' - postcodes.postcode)) AS mindiff')
@@ -84,7 +111,8 @@ class SearchController extends Controller
 
         $beekeepers = Beekeeper::all();
 
-        return $data->map(function($id) use($beekeepers) {
+        // Sort beekeepers based on sequence of ids in array $sortedBeekeeperIds
+        return $sortedBeekeeperIds->map(function($id) use($beekeepers) {
             return $beekeepers->where('id', $id)->first();
         });
 

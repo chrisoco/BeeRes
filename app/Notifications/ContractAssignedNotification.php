@@ -18,7 +18,7 @@ class ContractAssignedNotification extends Notification implements ShouldQueue
     /**
      * Create a new notification instance.
      *
-     * @return void
+     * @param Contract $contract
      */
     public function __construct(Contract $contract)
     {
@@ -61,6 +61,11 @@ class ContractAssignedNotification extends Notification implements ShouldQueue
         ];
     }
 
+    /**
+     * Generate SMS Textmessage based on optional values.
+     *
+     * @return string
+     */
     private function generateTextMessage() :string
     {
         $msg = "You have been assigned for a new Beekeeper job! \n\n";
@@ -88,6 +93,6 @@ class ContractAssignedNotification extends Notification implements ShouldQueue
         $msg .= GeoLocationController::generateGoogleMapsPin($this->contract->lat, $this->contract->lon);
 
         return $msg;
-        
+
     }
 }

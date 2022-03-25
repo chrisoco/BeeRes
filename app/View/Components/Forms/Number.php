@@ -8,56 +8,56 @@ class Number extends Component
 {
 
     /**
-     * The alert message.
+     * The input number name.
      *
      * @var string
      */
     public $name;
 
     /**
-     * The alert message.
+     * The input number title.
      *
      * @var string
      */
     public $title;
 
     /**
-     * The alert message.
+     * The input number value.
      *
-     * @var string
+     * @var float
      */
     public $value;
 
     /**
-     * The alert message.
+     * The input number min value.
      *
-     * @var string
+     * @var float
      */
     public $min;
 
     /**
-     * The alert message.
+     * The input number max value.
      *
-     * @var string
+     * @var float
      */
     public $max;
 
     /**
-     * The alert message.
+     * The input number increment steps.
      *
      * @var string
      */
     public $step;
 
     /**
-     * The alert message.
+     * The input number placeholder.
      *
-     * @var string
+     * @var float
      */
     public $placeholder;
 
     /**
-     * The alert message.
+     * If the input number is required.
      *
      * @var boolean
      */
@@ -66,16 +66,23 @@ class Number extends Component
     /**
      * Create a new component instance.
      *
-     * @return void
+     * @param $name
+     * @param $title
+     * @param $value
+     * @param $min
+     * @param $max
+     * @param $step
+     * @param $placeholder
+     * @param $required
      */
     public function __construct($name, $title, $value, $min, $max, $step, $placeholder, $required = 'true')
     {
-        $this->name  = $name;
-        $this->title = $title;
-        $this->value = $value;
-        $this->min   = $min;
-        $this->max   = $max;
-        $this->step  = $step;
+        $this->name        = $name;
+        $this->title       = $title;
+        $this->value       = $value;
+        $this->min         = $min;
+        $this->max         = $max;
+        $this->step        = $step;
         $this->placeholder = $placeholder;
         $this->required    = $required == 'true';
     }

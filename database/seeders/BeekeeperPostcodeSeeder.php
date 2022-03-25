@@ -9,7 +9,7 @@ use Illuminate\Database\Seeder;
 class BeekeeperPostcodeSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Add random 1-5 jurisdictions to each beekeeper
      *
      * @return void
      */

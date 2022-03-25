@@ -7,7 +7,7 @@ use Illuminate\View\Component;
 class Password extends Component
 {
     /**
-     * The alert type.
+     * If the password needs to be confirmed.
      *
      * @var boolean
      */
@@ -16,7 +16,7 @@ class Password extends Component
     /**
      * Create a new component instance.
      *
-     * @return void
+     * @param $confirm
      */
     public function __construct($confirm)
     {
