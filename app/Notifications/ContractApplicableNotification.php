@@ -44,7 +44,10 @@ class ContractApplicableNotification extends Notification implements ShouldQueue
     public function toNexmo($notifiable)
     {
         return (new NexmoMessage)
-            ->content("You have been selected for a new Beekeeper job! \nApply here: \n".
+            ->content("Dear ". $this->contract->beekeeper->fullName
+                ."\nYou have been selected for a new Beekeeper job!"
+                ."\nLocation: ".$this->contract->postcode->codeName
+                ."\nApply here: \n".
                 route('contract.accept', $this->contract->id));
     }
 
