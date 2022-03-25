@@ -14,6 +14,8 @@ use Illuminate\Notifications\Notifiable;
  * @property string $fullName
  * @property string $phone
  * @property string $phone_verified_at
+ * @property string $formattedPhone
+ * @property string $jurisdictionsToString
  * @property string $created_at
  * @property string $updated_at
  * @property User $user
@@ -38,17 +40,17 @@ class Beekeeper extends Model
     protected $fillable = ['user_id', 'firstname', 'lastname', 'phone', 'phone_verified_at', 'created_at', 'updated_at'];
 
 
-    public function getFullNameAttribute()
+    public function getFullNameAttribute() :string
     {
         return $this->firstname .' '. $this->lastname;
     }
 
-    public function getFormattedPhoneAttribute()
+    public function getFormattedPhoneAttribute() :string
     {
         return reverseFormatPhoneNum($this->phone);
     }
 
-    public function getJurisdictionsToStringAttribute()
+    public function getJurisdictionsToStringAttribute() :string
     {
         $res = '';
 

@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property string $created_at
  * @property string $updated_at
+ * @property string $codeName
  * @property Beekeeper[] $beekeepers
  * @property Contract[] $contracts
  */
@@ -30,7 +31,7 @@ class Postcode extends Model
      */
     protected $fillable = ['postcode', 'name', 'created_at', 'updated_at'];
 
-    public function getCodeNameAttribute()
+    public function getCodeNameAttribute() :string
     {
         return $this->postcode .' '. $this->name;
     }

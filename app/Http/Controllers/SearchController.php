@@ -63,7 +63,7 @@ class SearchController extends Controller
 
             $beekeepers = self::findClosestBeekeeper($postcode->postcode);
 
-            return Response($beekeepers->take(5)->map->only('fullName', 'formattedPhone', 'jurisdictionsToString'));
+            return Response($beekeepers->take(5)->map->only(['fullName', 'formattedPhone', 'jurisdictionsToString']));
 
         }
 
