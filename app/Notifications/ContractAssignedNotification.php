@@ -63,7 +63,7 @@ class ContractAssignedNotification extends Notification implements ShouldQueue
 
     private function generateTextMessage() :string
     {
-        $msg = "You have been assigned for a new Beekeeper job! \n";
+        $msg = "You have been assigned for a new Beekeeper job! \n\n";
 
         if($this->contract->hasOptionalInfo) {
             $msg .= "Additional Information: \n";
@@ -82,6 +82,8 @@ class ContractAssignedNotification extends Notification implements ShouldQueue
             }
 
         }
+
+        $msg .= "\nIf possible, please get in touch with the contact person in advance to discuss details.\n\n";
 
         $msg .= GeoLocationController::generateGoogleMapsPin($this->contract->lat, $this->contract->lon);
 
