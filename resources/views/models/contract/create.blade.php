@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="card col-md-6 offset-md-3">
+    <div class="card col-md-8 col-lg-4 offset-md-2 offset-lg-4">
         <div class="card-header text-center">
             <h4>Contract-Create</h4>
         </div>
