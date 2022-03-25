@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $created_by
  * @property float $lon
  * @property float $lat
+ * @property bool $hasOptionalInfo
  * @property string $contact_firstname
  * @property string $contact_lastname
  * @property string $contact_phone
@@ -22,7 +23,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property Postcode $postcode
  * @property User $created_by_user
  * @property Beekeeper[] $beekeepers
- * @property bool $hasOptionalInfo
  */
 class Contract extends Model
 {

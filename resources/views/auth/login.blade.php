@@ -13,7 +13,7 @@
                     @csrf
 
                     <div class="row mb-3">
-                        <label for="email" class="col-form-label">E-Mail Address</label>
+                        <label for="email" class="col-form-label">E-Mail Address<span class="text-danger">*</span></label>
 
                         <div class="col">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label for="password" class="col-form-label">Password</label>
+                        <label for="password" class="col-form-label">Password<span class="text-danger">*</span></label>
 
                         <div class="col">
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">

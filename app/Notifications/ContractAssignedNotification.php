@@ -88,7 +88,6 @@ class ContractAssignedNotification extends Notification implements ShouldQueue
         $msg .= GeoLocationController::generateGoogleMapsPin($this->contract->lat, $this->contract->lon);
 
         return $msg;
-
-
+        
     }
 }

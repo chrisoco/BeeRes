@@ -40,17 +40,17 @@ class Beekeeper extends Model
     protected $fillable = ['user_id', 'firstname', 'lastname', 'phone', 'phone_verified_at', 'created_at', 'updated_at'];
 
 
-    public function getFullNameAttribute() :string
+    public function getFullNameAttribute():string
     {
         return $this->firstname .' '. $this->lastname;
     }
 
-    public function getReverseFormattedPhoneAttribute() :string
+    public function getReverseFormattedPhoneAttribute():string
     {
         return reverseFormatPhoneNum($this->phone);
     }
 
-    public function getJurisdictionsToStringAttribute() :string
+    public function getJurisdictionsToStringAttribute():string
     {
         $res = '';
 
@@ -68,7 +68,7 @@ class Beekeeper extends Model
      * @param  \Illuminate\Notifications\Notification  $notification
      * @return string
      */
-    public function routeNotificationForNexmo($notification)
+    public function routeNotificationForNexmo($notification):string
     {
         return $this->phone;
     }

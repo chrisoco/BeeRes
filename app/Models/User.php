@@ -17,7 +17,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string $created_at
  * @property string $updated_at
  * @property Beekeeper $beekeeper
- * @property Contract[] $contracts
+ * @property Contract[] $contractsCreated
  */
 class User extends Authenticatable
 {
@@ -59,7 +59,7 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function contracts_created()
+    public function contractsCreated()
     {
         return $this->hasMany(Contract::class, 'created_by');
     }

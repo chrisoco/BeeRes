@@ -12,13 +12,11 @@ class NotificationController extends Controller
     public static function notifyBeekeeperNewContract(Contract $contract)
     {
 
-        // Find all Beekeepers from Region:
+        // Find all Beekeepers from specific Region
         $beekeepers = $contract->postcode->beekeepers;
 
         if(count($beekeepers) == 0) {
-
             $beekeepers = SearchController::findClosestBeekeeper($contract->postcode->postcode)->take(2);
-
         }
 
         foreach ($beekeepers as $beekeeper) {
