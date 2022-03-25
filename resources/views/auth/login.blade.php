@@ -2,7 +2,7 @@
     <div class="col-md-12 col-lg-8">
         @error('email')
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Error</strong> E-Mail Address or Password wrong!
+            <strong>Error</strong> E-Mail Address or Password is wrong!
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @enderror
