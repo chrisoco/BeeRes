@@ -14,7 +14,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string $fullName
  * @property string $phone
  * @property string $phone_verified_at
- * @property string $formattedPhone
+ * @property string $reverseFormattedPhone
  * @property string $jurisdictionsToString
  * @property string $created_at
  * @property string $updated_at
@@ -45,7 +45,7 @@ class Beekeeper extends Model
         return $this->firstname .' '. $this->lastname;
     }
 
-    public function getFormattedPhoneAttribute() :string
+    public function getReverseFormattedPhoneAttribute() :string
     {
         return reverseFormatPhoneNum($this->phone);
     }

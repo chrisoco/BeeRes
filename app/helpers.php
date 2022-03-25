@@ -38,15 +38,15 @@
         return $phone;
     }
 
-function reverseFormatPhoneNum($phone): string
-{
-    $num[0] = substr($phone, 2, 2);
-    $num[1] = substr($phone, 4, 3);
-    $num[2] = substr($phone, 7, 2);
-    $num[3] = substr($phone, 9, 2);
+    function reverseFormatPhoneNum($phone): string
+    {
+        $num[0] = substr($phone, 2, 2);
+        $num[1] = substr($phone, 4, 3);
+        $num[2] = substr($phone, 7, 2);
+        $num[3] = substr($phone, 9, 2);
 
-    return '0'.$num[0].' '.$num[1].' '.$num[2].' '.$num[3];
+        return '0'.$num[0].' '.$num[1].' '.$num[2].' '.$num[3];
 
-}
+    }
 
 
