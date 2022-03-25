@@ -15,13 +15,13 @@
 @section('content')
     @auth
         <div class="col-md-8 col-md-border m-auto">
-            @include('imker_search')
+            @include('models.beekeeper.search')
         </div>
     @else
         <div class="row" style="min-height: 70vh;">
             <div class="col-md-6 col-md-border d-flex justify-content-center m-auto">
                 <div class="h-100 w-100">
-                    @include('imker_search')
+                    @include('models.beekeeper.search')
                 </div>
             </div>
             <div class="col-md-6 col-md-border d-flex justify-content-center m-auto">
