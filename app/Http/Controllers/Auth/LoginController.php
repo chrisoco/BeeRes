@@ -15,7 +15,7 @@ class LoginController extends Controller
     |--------------------------------------------------------------------------
     |
     | This controller handles authenticating users for the application and
-    | redirecting them to the home screen. The controller uses a trait
+    | redirecting them to the profile screen. The controller uses a trait
     | to conveniently provide its functionality.
     |
     */

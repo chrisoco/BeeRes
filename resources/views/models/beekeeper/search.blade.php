@@ -1,4 +1,3 @@
-
 <div class="card col-lg-8 offset-lg-2 mb-2 mb-md-0">
     <div class="card-header text-center"><h4>Imker Search</h4></div>
     <div class="card-body" style="height: 22.5rem">

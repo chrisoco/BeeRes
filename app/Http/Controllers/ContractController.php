@@ -41,9 +41,11 @@ class ContractController extends Controller
             'plz'               => ['nullable', 'numeric', 'min:8000', 'max:9000', 'exists:App\Models\Postcode,postcode'],
             'contact_firstname' => ['nullable', 'string'],
             'contact_lastname'  => ['nullable', 'string'],
-            'contact_phone'     => ['nullable', 'regex:/^(?:00[1-9]{2}|0|\+[1-9]{2})(\d{9})$/'],
+            'contact_phone'     => ['nullable', 'regex:/^(?:0041|0|\+41)(\d{9})$/'],
             'info'              => ['nullable', 'string'],
             'created_by'        => ['required', 'exists:App\Models\User,id']
+        ], [
+            'contact_phone.regex' => 'Not a valid Format, please use: +41, 0041, 07x or 04x'
         ]);
 
 
@@ -53,7 +55,7 @@ class ContractController extends Controller
             // 1st Validation Nominatim Failed to find PLZ & input PLZ was shwon
             // 2nd Validation either Nominatim Failed again or PLZ failed and input PLZ needs to be shown again
             if(array_key_exists('plz', $request->all())) {
-                $validator->errors()->add('plz-api', 'Something went wrong with Nominatim');
+                $validator->errors()->add('plz-api', 'Invalid Postcode!');
             }
 
             return back()->withErrors($validator)->withInput();
@@ -93,7 +95,7 @@ class ContractController extends Controller
         // Create new Contract with Validated Data
         $contract = Contract::create($validated);
 
-        // Notify applicable imker
+        // Notify applicable Beekeeper
         NotificationController::notifyBeekeeperNewContract($contract);
 
         return redirect(route('contract.show', $contract->id));

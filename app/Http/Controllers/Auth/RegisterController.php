@@ -57,11 +57,12 @@ class RegisterController extends Controller
             'lastname'  => ['required', 'string', 'max:255'],
             'phone'     => ['required', 'regex:/^41\d{9}$/', 'unique:beekeepers'],
             'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password'  => ['required', 'string', 'min:8', 'regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/', 'confirmed'],
+            'password'  => ['required', 'string', 'min:8', 'regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/'],
+            'password_confirmation' => ['required', 'string', 'same:password'],
             'agb'       => ['required']
         ], [
-            'phone.regex' => 'Not a valid Format, please use: +41, 0041, 07x or 044',
-            'password.regex' => 'Password must contain at least 1x Uppercase, 1x Lowercase, a number and a special character!'
+            'phone.regex'    => 'Not a valid Format, please use: +41, 0041, 07x or 044',
+            'password.regex' => 'Password must contain at least 1x Uppercase, 1x Lowercase, a number and a special character!',
         ]);
     }
 
