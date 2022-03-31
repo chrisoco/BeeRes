@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             ContractSeeder::class,
             BeekeeperPostcodeSeeder::class,
             BeekeeperContractSeeder::class,
+            DemoSeeder::class,
         ]);
     }
 }

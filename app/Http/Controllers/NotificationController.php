@@ -24,7 +24,7 @@ class NotificationController extends Controller
 
         // If no beekeepers could be found, find the closest Beekeepers
         if(count($beekeepers) == 0) {
-            $beekeepers = SearchController::findClosestBeekeeper($contract->postcode->postcode)->take(2);
+            $beekeepers = SearchController::findClosestBeekeeper($contract->postcode->postcode)->take(1);
         }
 
         foreach ($beekeepers as $beekeeper) {
