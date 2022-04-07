@@ -9,20 +9,20 @@ Bei der Applikation handelt es sich um eine PHP-Webapplikation, welche das Frame
 ## Ergebnis
 Imker können sich mit ihren Kontaktinformationen Registrieren und ihre zuständigen Regionen auswählen. Die Mitarbeiter der Einsatzzentrale können einen neuen Auftrag erstellen. Dabei geben sie die Geolokalisation in Form von Latitude und Longitude an und allfällige Zusatz Informationen wie Kontaktangaben und Details zum Auftrag. Die Applikation ermittelt die repräsentative PLZ des Auftrags durch eine API-Abfrage von Nominatim. Sollte diese nicht funktioniert haben, wird der Mitarbeiter aufgefordert, die PLZ manuell anzugeben. Anschliessend werden Imker falls möglich, welche direkt zuständig sind für diese Region, ansonsten die Nächstgelegenen per SMS benachrichtigt mit der PLZ sowie einer URL zur Auftragsannahme. Dem Imker, welcher als erstes den Auftrag annimmt, erhält die zusätzlichen Infos in der Auftragsübersicht. Die zusätzlichen Infos sowie ein Google Maps Pin des genauen Auftragortes werden zusätzlich ihm per SMS übermittelt.
 
+## Docs
+- [**BeeRes_Dokumentation.pdf**](docs/BeeRes_Dokumentation_Sanitized.pdf)
+- [**BeeRes_Präsentation.pdf**](docs/BeeRes_Praesentation.pdf)
+
 ## Installation
 
 ### Installations voraussetzungen
-
-- XAMPP mit php v7.4
-- Composer v2
+- php v7.4 (XAMPP v3.2+)
+- Composer v2+
 - git
 - Nexmo Konto (Key & Secret) für das Versenden von SMS
 
-### Konsole öffnen und folgende Befehle ausführen:
-
-- `cd C:\xampp\htdocs`
-- `git clone`
-- `cd`
+### Ablauf:
+- Projekt lokal klonen
 - `composer install`
 - `cp .env.example .env`
 - `php artisan key:generate`
@@ -33,12 +33,10 @@ Imker können sich mit ihren Kontaktinformationen Registrieren und ihre zuständ
 - `php artisan migrate:fresh --seed`
 
 ### Default Information
-- Default S&R Login = admin@admin.ch
-- Default Beekeeper = jon@doe.ch
-- Passwort von allen = password
+- Default S&R Login = admin@admin.ch, password
+- Default Beekeeper = jon@doe.ch, password
 
 ### Tipps und Bugs
-
 Um die Datenbank zu leeren und die Migrations und den Seeder auszuführen:
 - `php artisan migrate:fresh --seed`
 
