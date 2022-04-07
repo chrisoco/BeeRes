@@ -13,8 +13,8 @@
 ### Konsole öffnen und folgende Befehle ausführen:
 
 - `cd C:\xampp\htdocs`
-- `git clone https://gitlab.santis-basis.ch/chrisoco/ipa.git`
-- `cd ipa`
+- `git clone`
+- `cd`
 - `composer install`
 - `cp .env.example .env`
 - `php artisan key:generate`
